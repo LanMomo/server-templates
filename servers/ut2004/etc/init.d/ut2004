@@ -25,11 +25,10 @@ ADMINLOGIN='login'
 ADMINPASSPATH='/root/webui_pass.txt'
 
 # Generate a new WebUI password if not present
-if [[ -e $ADMINPASSPATH && ! -f $ADMINPASSPATH ]];then
-    rm -rf $ADMINPASSPATH
+if [[ ! -f $ADMINPASSPATH ]]; then
     echo "Generating a new password, check $ADMINPASSPATH"
     openssl rand -base64 32 > $ADMINPASSPATH
-    chmod a-rwx $ADMINPASSPATH
+    chmod 400 $ADMINPASSPATH
 fi
 
 # Fetch admin password
