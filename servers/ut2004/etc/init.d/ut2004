@@ -1,0 +1,113 @@
+#!/bin/bash
+# /etc/init.d/minecraft
+# version 0.3.9 2012-08-13 (YYYY-MM-DD)
+ 
+### BEGIN INIT INFO
+# Provides:   ut2004
+# Required-Start: $local_fs $remote_fs screen-cleanup
+# Required-Stop:  $local_fs $remote_fs
+# Should-Start:   $network
+# Should-Stop:    $network
+# Default-Start:  2 3 4 5
+# Default-Stop:   0 1 6
+# Short-Description:    UT2004 server
+# Description:    Script managing the Unreal Tournamnet 2004 server
+### END INIT INFO
+ 
+ #Settings
+SERVICE='ucc-bin'
+OPTIONS='-nohomedir -langame'
+USERNAME='ut2004'
+SCREENSESSION="ut2004"
+INITIALMAP='ONS-Torlan'
+GAMETYPE='Onslaught.ONSOnslaughtGame'
+UTPATH='/opt/UT2004/System'
+ADMINLOGIN='login'
+ADMINPASSPATH='/root/webui_pass.txt'
+HISTORY=1024
+
+if [[ -e $ADMINPASSPATH && ! -f $ADMINPASSPATH ]];then
+  rm -rf $ADMINPASSPATH
+fi
+if [[ ! -e $ADMINPASSPATH ]];then
+  echo "Generating a new password, check $ADMINPASSPATH"
+  openssl rand -base64 32 > $ADMINPASSPATH
+  chmod a-rwx $ADMINPASSPATH
+fi
+
+ADMINPASS=`cat $ADMINPASSPATH`
+INVOCATION="./ucc-bin server ${INITIALMAP}?game=${GAMETYPE}?AdminName=${ADMINLOGIN}?AdminPassword=${ADMINPASS} $OPTIONS"
+ME=`whoami`
+
+ as_user() {
+   if [ $ME == $USERNAME ] ; then
+     bash -c "$1"
+   else
+     su - $USERNAME -c "$1"
+   fi
+ }
+
+ start_service() {
+   if  pgrep -u $USERNAME -f $SERVICE > /dev/null
+   then
+     echo "$SERVICE is already running!"
+   else
+     echo "Starting $SERVICE..."
+     cd $UTPATH
+     as_user "cd $UTPATH && screen -h $HISTORY -dmS $SCREENSESSION $INVOCATION"
+
+     sleep 7
+     if pgrep -u $USERNAME -f $SERVICE > /dev/null
+     then
+       echo "$SERVICE is now running."
+     else
+       echo "Error! Could not start $SERVICE!"
+     fi
+   fi
+ }
+ 
+ stop_service() {
+   if pgrep -u $USERNAME -f $SERVICE > /dev/null
+   then
+     echo "Stopping $SERVICE"
+     as_user "screen -p 0 -S $SCREENSESSION -X quit"
+     sleep 7
+   else
+     echo "$SERVICE was not running."
+   fi
+   if pgrep -u $USERNAME -f $SERVICE > /dev/null
+   then
+     echo "Error! $SERVICE could not be stopped."
+   else
+     echo "$SERVICE is stopped."
+   fi
+ } 
+  
+ #Start-Stop here
+ case "$1" in
+   start)
+     start_service
+     ;;
+   stop)
+     stop_service
+     ;;
+   restart)
+     stop_service
+     start_service
+     ;;
+   status)
+     if pgrep -u $USERNAME -f $SERVICE > /dev/null
+     then
+       echo "$SERVICE is running."
+     else
+       echo "$SERVICE is not running."
+     fi
+     ;;
+   *)
+   echo "Usage: $0 {start|stop|status}"
+   exit 1
+   ;;
+ esac
+ 
+ exit 0
+ 
