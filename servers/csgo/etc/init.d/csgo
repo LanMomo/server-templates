@@ -1,0 +1,31 @@
+#!/bin/bash
+### BEGIN INIT INFO
+# Provides:          csgo
+# Required-Start:    $local_fs $remote_fs $network $syslog
+# Required-Stop:     $local_fs $remote_fs $network $syslog
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Start/stop csgoserver as daemon
+### END INIT INFO
+
+## Username to run csgo under
+USER="csgo"
+
+## Absolute path to the server script.
+SERVER="/home/csgo/csgoserver"
+
+case "$1" in
+    start)
+        su - $USER -c "$SERVER start"
+        ;;
+    stop)
+        su - $USER -c "$SERVER stop"
+        ;;
+    update)
+        su - $USER -c "$SERVER update-restart"
+        ;;
+    *)
+        echo "Usage: $0 [start|stop|update]"
+        exit 1
+        ;;
+esac
