@@ -1,4 +1,3 @@
 fullname=$1
 
-# TODO
-exit 1
+sed -i "s/^motd=.*/motd=$fullname/" /home/minecraft/server/server.properties
