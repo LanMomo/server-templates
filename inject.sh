@@ -5,6 +5,11 @@
 DIR="$(dirname "$(readlink -f "$0")")"
 VZ_ROOT="/var/lib/vz/"
 
+if [ "$#" -ne 2 ]; then
+    echo "READ THE CODE"
+    exit 1
+fi
+
 ctid=$1
 server_template=$2
 
