@@ -19,3 +19,5 @@ if [[ ! "$installed_version" == "$current_version" ]]; then
     echo "$current_version" > "$VERSION_FILE"
     echo "Done updating minecraft server."
 fi
+
+chown minecraft: /home/minecraft/server/server.properties
