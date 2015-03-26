@@ -38,7 +38,7 @@ sync() {
 inject_requirements() {
     template=$1
     requirement=$(cat "${DIR}/requirements.txt" | grep "^$template:" | cut -d ':' -f 2 | head -n 1)
-    if [[ -z "$requirement" ]]; then
+    if [[ ! -z "$requirement" ]]; then
         sync "$requirement"
     fi
 }
