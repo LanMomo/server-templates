@@ -35,7 +35,18 @@ sync() {
     echo "Done syncing '${template}'"
 }
 
+inject_requirements() {
+    template=$1
+    requirement=$(cat "${DIR}/requirements.txt" | grep "^$template:" | wc -d ':' -f 2 | head -n 1)
+    if [[ -z "$requirement" ]]; then
+        sync "$requirement"
+    fi
+}
+
 # Sync generic file to container
 sync "global"
+
+inject_requirements "$server_template"
+
 # Sync custom scripts for template
 sync "$server_template"
