@@ -35,6 +35,12 @@ sync() {
     echo "Done syncing '${template}'"
 }
 
+install() {
+    template="$1"
+    inject_requirements "$template"
+    sync "$template"
+}
+
 inject_requirements() {
     template=$1
     requirement=$(cat "${DIR}/requirements.txt" | grep "^$template:" | cut -d ':' -f 2 | head -n 1)
@@ -46,7 +52,5 @@ inject_requirements() {
 # Sync generic file to container
 sync "global"
 
-inject_requirements "$server_template"
-
-# Sync custom scripts for template
-sync "$server_template"
+# Sync template with nested dependencies
+install "$server_template"
