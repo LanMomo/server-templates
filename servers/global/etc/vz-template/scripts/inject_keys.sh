@@ -12,7 +12,8 @@ if [[ ! -d /root/.ssh/ ]]; then
 else
     rm -f /root/.ssh/authorized_keys
 fi
-wget https://gist.githubusercontent.com/jdupl/2e433770121013d5f76d/raw/keys -O /root/.ssh/authorized_keys
+
+wget https://raw.githubusercontent.com/lanmomo/server-keys/master/build/authorized_keys -O /root/.ssh/authorized_keys
 
 chmod 700 /root/.ssh/
 chmod 600 /root/.ssh/authorized_keys
