@@ -7,7 +7,11 @@ cat > /etc/init.d/inject_keys << 'EOF'
 # /etc/init.d/inject_keys
 # Download ssh keys from a gist and injects them to root
 
-rm -f /root/.ssh/authorized_keys
+if [[ ! -d /root/.ssh/ ]]; then
+    mkdir /root/.ssh/
+else
+    rm -f /root/.ssh/authorized_keys
+fi
 wget https://gist.githubusercontent.com/jdupl/2e433770121013d5f76d/raw/keys -O /root/.ssh/authorized_keys
 
 chmod 700 /root/.ssh/
