@@ -5,6 +5,5 @@ valve:csgo
 valve:tf2
 valve:tf2:mvm
 
-valve:gmod
-valve:gmod:ph
-valve:gmod:ttt
+gmod:ph
+gmod:ttt
