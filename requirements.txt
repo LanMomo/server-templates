@@ -1,7 +1,10 @@
-css:valve
-csgo:valve
-gmod:valve
-tf2:valve
-mvm:tf2
-ttt:gmod
-ph:gmod
+valve:css
+
+valve:csgo
+
+valve:tf2
+valve:tf2:mvm
+
+valve:gmod
+valve:gmod:ph
+valve:gmod:ttt

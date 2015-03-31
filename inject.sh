@@ -14,12 +14,12 @@ ctid=$1
 server_template=$2
 
 sync() {
-    template=$1
+    template_sync=$1
 
-    source_dir="${DIR}/servers/${template}/"
+    source_dir="${DIR}/servers/${template_sync}/"
     dest_dir="${VZ_ROOT}/private/${ctid}/"
 
-    echo "Syncing ${template} from '${source_dir}' to '${dest_dir}'."
+    echo "Syncing ${template_sync} from '${source_dir}' to '${dest_dir}'."
 
     if [[ ! -d "$source_dir" ]]; then
         echo "Directory '${source_dir}' not found !"
@@ -32,22 +32,20 @@ sync() {
     fi
 
     rsync -rv "$source_dir" "$dest_dir"
-    echo "Done syncing '${template}'"
+    echo "Done syncing '${template_sync}'"
 }
 
 install() {
-    template="$1"
-    inject_requirements "$template"
-    sync "$template"
+    template=$1
+    requirement=$(cat "${DIR}/requirements.txt" | grep "\:$template$")
+
+    IFS=':' read -a array <<< "$requirement"
+    for element in "${array[@]}"
+    do
+        sync "$element"
+    done
 }
 
-inject_requirements() {
-    template=$1
-    requirement=$(cat "${DIR}/requirements.txt" | grep "^$template:" | cut -d ':' -f 2 | head -n 1)
-    if [[ ! -z "$requirement" ]]; then
-        sync "$requirement"
-    fi
-}
 
 # Sync generic file to container
 sync "global"
