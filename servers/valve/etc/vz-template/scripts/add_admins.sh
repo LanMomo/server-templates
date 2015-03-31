@@ -12,7 +12,7 @@ cat > /etc/init.d/add_admins << 'EOF'
 
 
 # Get game server root
-./etc/vz-template/gameserver_root.sh
+. /etc/vz-template/gameserver_root.sh
 
 steam_ids_dir=$(mktemp -d "/tmp/XXXXXXXXXXXX")
 steam_ids_file="$steam_ids_dir/ids.txt"
