@@ -36,16 +36,20 @@ sync() {
 }
 
 install() {
-    template=$1
-    requirement=$(cat "${DIR}/requirements.txt" | grep "\:$template$")
+    local template="$1"
 
-    IFS=':' read -a array <<< "$requirement"
-    for element in "${array[@]}"
-    do
-        sync "$element"
-    done
+    inject_requirements "$template"
+    sync "$template"
 }
 
+inject_requirements() {
+    local template=$1
+    local requirement=$(cat "${DIR}/requirements.txt" | grep "^$template:" | cut -d ':' -f 2 | head -n 1)
+
+    if [[ -n "$requirement" ]]; then
+        install "$requirement"
+    fi
+}
 
 # Sync generic file to container
 sync "global"
