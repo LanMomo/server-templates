@@ -1,9 +1,8 @@
-valve:css
+tf2:sourcemod
+css:sourcemod
+csgo:sourcemod
 
-valve:csgo
+ttt:gmod
+ph:gmod
 
-valve:tf2
-valve:tf2:mvm
-
-gmod:ph
-gmod:ttt
+mvm:tf2
