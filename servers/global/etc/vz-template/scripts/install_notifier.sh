@@ -1,17 +1,24 @@
 #!/bin/bash
-# Download, install and add to boot the lanmomo-notifier deamon
+# Download, install and add to boot the lanmomo-notifier deamon when templating
 
+# pre inst
 if ! grep -q '^lanmomo-notifier:' /etc/passwd ; then
     useradd -r lanmomo-notifier
 fi
 
+apt-get -y --force-yes install python3
+
 mkdir /opt/lanmomo-notifier/
 
-wget https://github.com/lanmomo/gameserver-notifier/blob/master/src/notifier.py -O /opt/lanmomo-notifier/notifier.py
+
+
+# inst
+wget https://raw.githubusercontent.com/lanmomo/gameserver-notifier/master/src/notifier.py -O /opt/lanmomo-notifier/notifier.py
 chmod 700 /opt/lanmomo-notifier/notifier.py
 chown lanmomo-notifier /opt/lanmomo-notifier/notifier.py
 
 
+# post inst
 cat > /etc/init.d/lanmomo-notifier << 'EOF'
 #!/bin/bash
 # /etc/init.d/lanmomo-notifier
@@ -25,7 +32,7 @@ SCREENSESSION="lanmomo-notifier"
 HISTORY=1024
 
 # load token, game_id and url from /etc/vz-template/notifier-config.sh
-./etc/vz-template/notifier-config.sh
+. /etc/vz-template/notifier_config_global.sh
 
 INVOCATION="python3 notifier.py --token $token --url $url --interval 30 $game_id"
 
