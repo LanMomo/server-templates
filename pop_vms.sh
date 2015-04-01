@@ -12,11 +12,10 @@ ct_exists() {
 pop_vm() {
     line="$1"
     hostname=$(echo "$line" | cut -f 1 -d ';')
-    ctid=$(echo "$line" | cut -f 2 -d ';')
+    vzconfig=$(echo "$line" | cut -f 2 -d ';')
     ostemplate=$(echo "$line" | cut -f 3 -d ';')
     public_mac=$(echo "$line" | cut -f 5 -d ';')
-    private_mac=$(echo "$line" | cut -f 6 -d ';')
-    vzconfig=$(echo "$line" | cut -f 7 -d ';')
+    ctid=$(echo "$line" | cut -f 6 -d ';')
 
     vzctl create "$ctid" --ostemplate "$ostemplate" --name "$hostname" --hostname "$hostname" --config "$vzconfig"
 
