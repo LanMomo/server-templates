@@ -24,10 +24,10 @@ USER='lanmomo-notifier'
 SCREENSESSION="lanmomo-notifier"
 HISTORY=1024
 
-# load token and url from /etc/vz-template/notifier-config.sh
+# load token, game_id and url from /etc/vz-template/notifier-config.sh
 ./etc/vz-template/notifier-config.sh
 
-INVOCATION="python3 notifier.py --token $token --url $url --interval 30"
+INVOCATION="python3 notifier.py --token $token --url $url --interval 30 $game_id"
 
 start_service() {
     su - $USER -c "cd $PATH; screen -h $HISTORY -dmS $SCREENSESSION $INVOCATION"
