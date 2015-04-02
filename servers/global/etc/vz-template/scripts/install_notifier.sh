@@ -36,10 +36,9 @@ HISTORY=1024
 # load game_id
 . /etc/vz-template/template_vars.sh
 
-INVOCATION="python3 notifier.py --token $token --url $url --interval 30 $game_id"
 
 start_service() {
-    su - $USER -c "cd $NOTIFIER_PATH; screen -h $HISTORY -dmS $SCREENSESSION $INVOCATION"
+    su - $USER -c "cd '$NOTIFIER_PATH'; screen -h '$HISTORY' -dmS '$SCREENSESSION' python3 notifier.py --token '$token' --url '$url' --interval 30 '$game_id'"
 }
 
 stop_service() {
