@@ -51,6 +51,9 @@ inject_requirements() {
     fi
 }
 
+# Remove any old content in /etc/vz-template
+rm -rf "${VZ_ROOT}/private/${ctid}/etc/vz-template/"
+
 # Sync generic file to container
 sync "global"
 
