@@ -3,7 +3,6 @@
 # Script to sync files from servers folder to container.
 
 DIR="$(dirname "$(readlink -f "$0")")"
-VZ_ROOT="/var/lib/vz/"
 
 if [ "$#" -ne 2 ]; then
     echo "READ THE CODE"
@@ -13,11 +12,13 @@ fi
 ctid=$1
 server_template=$2
 
+ct_private=$(vzlist -a1o private "$ctid")
+
 sync() {
     template_sync=$1
 
     source_dir="${DIR}/servers/${template_sync}/"
-    dest_dir="${VZ_ROOT}/private/${ctid}/"
+    dest_dir="${ct_private}/"
 
     echo "Syncing ${template_sync} from '${source_dir}' to '${dest_dir}'."
 
@@ -52,7 +53,7 @@ inject_requirements() {
 }
 
 # Remove any old content in /etc/vz-template
-rm -rf "${VZ_ROOT}/private/${ctid}/etc/vz-template/"
+rm -rf "${ct_private}/etc/vz-template/"
 
 # Sync generic file to container
 sync "global"

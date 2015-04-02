@@ -2,7 +2,6 @@
 
 DIR="$(dirname "$(readlink -f "$0")")"
 HOST_BRIDGE="vmbr0"
-VZ_ROOT="/var/lib/vz/private"
 DNS="8.8.8.8"
 
 ct_exists() {
@@ -23,7 +22,10 @@ pop_vm() {
     vzctl set "$ctid" --netif_add "eth0,${public_mac},veth${ctid}.0,,${HOST_BRIDGE}" --save
     vzctl set "$ctid" --nameserver "$DNS" --save
 
-    interfaces="${VZ_ROOT}/${ctid}/etc/network/interfaces"
+    ct_private=$(vzlist -a1o private "$ctid")
+
+    interfaces="${ct_private}/etc/network/interfaces"
+
     cat > $interfaces << EOF
 # Auto generated lo interface
 auto lo
