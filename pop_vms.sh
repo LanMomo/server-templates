@@ -38,7 +38,7 @@ EOF
 while read line;
 do
     ctid=$(echo "$line" | cut -f 2 -d ';')
-    if [[ $(tr -dc ';' <<<"$line" | wc -c) -eq 6 ]] && ! ct_exists "$ctid"; then
+    if [[ $(tr -dc ';' <<<"$line" | wc -c) -eq 5 ]] && ! ct_exists "$ctid"; then
         pop_vm "$line"
     fi
 done < "${DIR}/vms.csv"
