@@ -6,7 +6,7 @@ if ! grep -q '^lanmomo-notifier:' /etc/passwd ; then
     useradd -r lanmomo-notifier
 fi
 
-apt-get -y --force-yes install python3
+apt-get -y --force-yes install python3 python3-requests
 
 mkdir /opt/lanmomo-notifier/
 
