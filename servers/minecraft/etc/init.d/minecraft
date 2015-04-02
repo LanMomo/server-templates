@@ -45,7 +45,7 @@ case "$1" in
         start_service
     ;;
     status)
-        if su - c $USER "screen -ls | grep -q $SCREENSESSION"; then
+        if su - $USER -c "screen -ls | grep -q $SCREENSESSION"; then
             echo "$SERVICE is running."
         else
             echo "$SERVICE is not running."

@@ -24,7 +24,7 @@ cat > /etc/init.d/lanmomo-notifier << 'EOF'
 # /etc/init.d/lanmomo-notifier
 
 #Settings
-PATH='/opt/lanmomo-notifier/'
+NOTIFIER_PATH='/opt/lanmomo-notifier/'
 SERVICE='lanmomo-notifier'
 USER='lanmomo-notifier'
 SCREENSESSION="lanmomo-notifier"
@@ -39,7 +39,7 @@ HISTORY=1024
 INVOCATION="python3 notifier.py --token $token --url $url --interval 30 $game_id"
 
 start_service() {
-    su - $USER -c "cd $PATH; screen -h $HISTORY -dmS $SCREENSESSION $INVOCATION"
+    su - $USER -c "cd $NOTIFIER_PATH; screen -h $HISTORY -dmS $SCREENSESSION $INVOCATION"
 }
 
 stop_service() {
