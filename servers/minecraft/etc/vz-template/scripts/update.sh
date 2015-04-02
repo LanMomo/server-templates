@@ -12,7 +12,7 @@ if [[ -f "$VERSION_FILE" ]]; then
     installed_version=$(cat "$VERSION_FILE")
 fi
 
-if [[ ! "$installed_version" == "$current_version" ]]; then
+if [[ "$installed_version" != "$current_version" ]]; then
     echo "Updating minecraft server from ${installed_version} to ${current_version}..."
     wget "https://s3.amazonaws.com/Minecraft.Download/versions/$current_version/minecraft_server.$current_version.jar" -O "$JAR_FILE"
     chown minecraft "$JAR_FILE"

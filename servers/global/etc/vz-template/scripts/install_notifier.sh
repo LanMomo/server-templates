@@ -26,13 +26,15 @@ cat > /etc/init.d/lanmomo-notifier << 'EOF'
 #Settings
 PATH='/opt/lanmomo-notifier/'
 SERVICE='lanmomo-notifier'
-OPTIONS='-nohomedir -langame'
 USER='lanmomo-notifier'
 SCREENSESSION="lanmomo-notifier"
 HISTORY=1024
 
-# load token, game_id and url from /etc/vz-template/notifier-config.sh
+# load token and url
 . /etc/vz-template/notifier_config_global.sh
+
+# load game_id
+. /etc/vz-template/template_vars.sh
 
 INVOCATION="python3 notifier.py --token $token --url $url --interval 30 $game_id"
 

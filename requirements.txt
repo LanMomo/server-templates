@@ -1,3 +1,6 @@
+gmod:valve
+sourcemod:valve
+
 tf2:sourcemod
 css:sourcemod
 csgo:sourcemod
