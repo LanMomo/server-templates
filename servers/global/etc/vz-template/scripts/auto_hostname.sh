@@ -24,4 +24,4 @@ EOF
 
 update-rc.d -f auto_hostname remove
 chmod +x /etc/init.d/auto_hostname
-update-rc.d auto_hostname defaults
+update-rc.d auto_hostname defaults 19

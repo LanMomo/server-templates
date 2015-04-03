@@ -1,4 +1,4 @@
-#!/bin/bash 
+#!/bin/bash
 ### BEGIN INIT INFO
 # Provides:   ut2004
 # Required-Start: $local_fs $remote_fs screen-cleanup
@@ -8,9 +8,9 @@
 # Default-Start:  2 3 4 5
 # Default-Stop:   0 1 6
 # Short-Description:    UT2004 server
-# Description:    Script managing the Unreal Tournamnet 2004 server
+# Description:    Script managing the Unreal Tournament 2004 server
 ### END INIT INFO
- 
+
 #Settings
 SERVICE='ucc-bin'
 OPTIONS='-nohomedir -langame'
@@ -21,15 +21,8 @@ GAMETYPE='Onslaught.ONSOnslaughtGame'
 UTPATH='/opt/UT2004/System'
 HISTORY=1024
 
-ADMINLOGIN='login'
+ADMINLOGIN='admin'
 ADMINPASSPATH='/root/webui_pass.txt'
-
-# Generate a new WebUI password if not present
-if [[ ! -f $ADMINPASSPATH ]]; then
-    echo "Generating a new password, check $ADMINPASSPATH"
-    openssl rand -base64 32 > $ADMINPASSPATH
-    chmod 400 $ADMINPASSPATH
-fi
 
 # Fetch admin password
 ADMINPASS=`cat $ADMINPASSPATH`
@@ -38,11 +31,11 @@ INVOCATION="./ucc-bin server ${INITIALMAP}?game=${GAMETYPE}?AdminName=${ADMINLOG
 start_service() {
     su - $USER -c "cd $UTPATH; screen -h $HISTORY -dmS $SCREENSESSION $INVOCATION"
 }
- 
+
 stop_service() {
     su - $USER -c "screen -p 0 -S $SCREENSESSION -X quit"
-} 
-  
+}
+
 #Start-Stop here
 case "$1" in
     start)
@@ -66,6 +59,6 @@ case "$1" in
         echo "Usage: $0 {start|stop|status}"
         exit 1
     ;;
- esac
- 
- exit 0
+esac
+
+exit 0

@@ -24,4 +24,4 @@ EOF
 
 update-rc.d -f auto_webui remove
 chmod +x /etc/init.d/auto_webui
-update-rc.d auto_webui defaults
+update-rc.d auto_webui defaults 19
