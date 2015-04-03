@@ -1,5 +1,6 @@
-gmod:valve
 sourcemod:valve
+gmod:valve
+kf:valve
 
 tf2:sourcemod
 css:sourcemod
