@@ -1,6 +1,14 @@
 #!/bin/bash
 # Download, install and add to boot the lanmomo-notifier deamon when templating
 
+
+# Check for a valid game_id
+. /etc/vz-template/template_vars.sh
+if [[ -z "$game_id" ]]; then
+    echo "Warning: Ignoring installation of notifier as game_id is not set !"
+    exit 1
+fi
+
 # pre inst
 if ! grep -q '^lanmomo-notifier:' /etc/passwd ; then
     useradd -r lanmomo-notifier
@@ -9,7 +17,6 @@ fi
 apt-get -y --force-yes install python3 python3-requests
 
 mkdir /opt/lanmomo-notifier/
-
 
 
 # inst
