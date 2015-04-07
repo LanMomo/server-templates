@@ -13,17 +13,22 @@ pop_vm() {
     line="$1"
     hostname=$(echo "$line" | cut -f 1 -d ';')
     vzconfig=$(echo "$line" | cut -f 2 -d ';')
-    ostemplate=$(echo "$line" | cut -f 3 -d ';')
+    ostemplate_short=$(echo "$line" | cut -f 3 -d ';')
     public_mac=$(echo "$line" | cut -f 5 -d ';')
     ctid=$(echo "$line" | cut -f 6 -d ';')
 
-    vzctl create "$ctid" --ostemplate "$ostemplate" --name "$hostname" --hostname "$hostname" --config "$vzconfig"
+    # Get template path from host vz.conf
+    . /etc/vz/vz.conf
+    template_path="$TEMPLATE/cache/"
+    ostemplate_long=$(ls "$template_path" | grep -i "^$ostemplate_short" | sort -rfg | head -n 1 | | sed s/\.tar\.*//g)
 
+    # Create ct and set network
+    vzctl create "$ctid" --ostemplate "$ostemplate_long" --name "$hostname" --hostname "$hostname" --config "$vzconfig"
     vzctl set "$ctid" --netif_add "eth0,${public_mac},veth${ctid}.0,,${HOST_BRIDGE}" --save
     vzctl set "$ctid" --nameserver "$DNS" --save
 
+    # Create network interface for DHCP
     ct_private=$(vzlist -a1o private "$ctid")
-
     interfaces="${ct_private}/etc/network/interfaces"
 
     cat > $interfaces << EOF
