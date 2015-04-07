@@ -20,7 +20,7 @@ pop_vm() {
     # Get template path from host vz.conf
     . /etc/vz/vz.conf
     template_path="$TEMPLATE/cache/"
-    ostemplate_long=$(ls "$template_path" | grep -i "^$ostemplate_short" | sort -rfg | head -n 1 | | sed s/\.tar\.*//g)
+    ostemplate_long=$(ls "$template_path" | grep -i "^$ostemplate_short" | sort -rfg | head -n 1 | sed s/\.tar\.*//g)
 
     # Create ct and set network
     vzctl create "$ctid" --ostemplate "$ostemplate_long" --name "$hostname" --hostname "$hostname" --config "$vzconfig"
