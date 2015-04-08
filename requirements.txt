@@ -1,6 +1,7 @@
 valve:notifier
 ut2004:notifier
 minecraft:notifier
+mumble:notifier
 
 sourcemod:valve
 gmod:valve
