@@ -58,5 +58,7 @@ rm -rf "${ct_private}/etc/vz-template/"
 # Sync generic file to container
 sync "global"
 
-# Sync template with nested dependencies
-install "$server_template"
+if [[ "$server_template" != "global" ]]; then
+    # Sync template with nested dependencies
+    install "$server_template"
+fi

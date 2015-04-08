@@ -40,12 +40,25 @@ iface lo inet loopback
 auto eth0
     iface eth0 inet dhcp
 EOF
+
+    # resync notifier config to CT
+    if [[ -f "${ct_private}/etc/vz-template/notifier_config_global.sh" ]]; then
+        cp -f "${DIR}/servers/notifier/etc/vz-template/notifier_config_global.sh" "${ct_private}/etc/vz-template/notifier_config_global.sh"
+    fi
 }
 
-while read line;
-do
+
+# Sync vz configs
+bash $DIR/utils/sync_configs.sh
+
+csv_file="${DIR}/vms.csv"
+if [ "$#" -eq 1 ]; then
+    csv_file="$1"
+fi
+
+while read line; do
     ctid=$(echo "$line" | cut -f 2 -d ';')
     if [[ $(tr -dc ';' <<<"$line" | wc -c) -eq 5 ]] && ! ct_exists "$ctid"; then
         pop_vm "$line"
     fi
-done < "${DIR}/vms.csv"
+done < "$csv_file"
