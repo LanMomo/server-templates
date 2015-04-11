@@ -12,6 +12,5 @@ css:sourcemod
 csgo:sourcemod
 
 ttt:gmod
-ph:gmod
-
+ph:tf2
 mvm:tf2
