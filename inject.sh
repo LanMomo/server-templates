@@ -20,6 +20,11 @@ sync() {
     source_dir="${DIR}/servers/${template_sync}/"
     dest_dir="${ct_private}/"
 
+    if [[ "$dest_dir" == "/" ]]; then
+        echo "Avoiding a sync to '/' !"
+        exit 1
+    fi
+
     echo "Syncing ${template_sync} from '${source_dir}' to '${dest_dir}'."
 
     if [[ ! -d "$source_dir" ]]; then
