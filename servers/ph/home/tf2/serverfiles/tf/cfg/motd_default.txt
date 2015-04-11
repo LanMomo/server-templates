@@ -1,0 +1,55 @@
+<html>
+    <head>
+        <style type="text/css">
+            body {
+                background-color:#676570;
+                color:#ECECEC;
+                font-family: Verdana;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Bienvenue au server Prophunt de lanmomo !</h1>
+
+        <h2>!! LISEZ-MOI !!</h2>
+
+        <p>Pour ouvrir le menu des props, tapez <strong>!propmenu</strong> .</p>
+
+        <p>Pour changer de map, vous pouvez faire un vote avec <strong>rtv</strong> .</p>
+        <br>
+
+        <h3>Voici la liste des maps disponibles sur le serveur: </h3>
+
+        <li>arena_brawl_b1</li>
+        <li>arena_concord_b3</li>
+        <li>arena_desolation_pb1</li>
+        <li>arena_farm_feud_b1</li>
+        <li>arena_ravage_b1</li>
+        <li>arena_storm_b1c</li>
+        <li>ph_basalt_a2</li>
+        <li>ph_canyon_a1</li>
+        <li>ph_cargo_b7</li>
+        <li>ph_cchotel_b3</li>
+        <li>ph_cliffface_b1</li>
+        <li>ph_devils_canyon_a1</li>
+        <li>ph_farm_a5</li>
+        <li>ph_goldtooth_a1</li>
+        <li>ph_grassland_a1</li>
+        <li>ph_hanger18_b7</li>
+        <li>ph_headquarters_b3</li>
+        <li>ph_lumberyard_a2</li>
+        <li>ph_manorgrounds_a4</li>
+        <li>ph_maze_a4</li>
+        <li>ph_mountain_a2</li>
+        <li>ph_northural_a2</li>
+        <li>ph_oasis_a1</li>
+        <li>ph_otherside_a1</li>
+        <li>ph_redstone_a2</li>
+        <li>ph_sawmill_a2</li>
+        <li>ph_spookyharvest_a3</li>
+        <li>ph_timbertown_a3</li>
+        <li>ph_warehouse_b1</li>
+        <li>ph_watchtower_a1</li>
+        <li>spooky_ravine_a1</li>
+    </body>
+</html>
