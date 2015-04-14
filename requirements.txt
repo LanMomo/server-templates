@@ -14,3 +14,6 @@ csgo:sourcemod
 ttt:gmod
 ph:tf2
 mvm:tf2
+
+csgo-comp:csgo
+csgo-gg:csgo
