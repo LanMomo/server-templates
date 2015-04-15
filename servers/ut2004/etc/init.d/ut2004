@@ -22,7 +22,7 @@ UTPATH='/opt/UT2004/System'
 HISTORY=1024
 
 ADMINLOGIN='admin'
-ADMINPASSPATH='/root/webui_pass.txt'
+ADMINPASSPATH='/root/admin_pass.txt'
 
 # Fetch admin password
 ADMINPASS=`cat $ADMINPASSPATH`
