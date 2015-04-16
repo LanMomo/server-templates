@@ -10,17 +10,17 @@ ct_exists() {
 }
 
 pop_vm() {
-    line="$1"
-    hostname=$(echo "$line" | cut -f 1 -d ';')
-    vzconfig=$(echo "$line" | cut -f 2 -d ';')
-    ostemplate_short=$(echo "$line" | cut -f 3 -d ';')
-    public_mac=$(echo "$line" | cut -f 5 -d ';')
-    ctid=$(echo "$line" | cut -f 6 -d ';')
+    local line="$1"
+    local hostname=$(echo "$line" | cut -f 1 -d ';')
+    local vzconfig=$(echo "$line" | cut -f 2 -d ';')
+    local ostemplate_short=$(echo "$line" | cut -f 4 -d ';')
+    local public_mac=$(echo "$line" | cut -f 6 -d ';')
+    local ctid=$(echo "$line" | cut -f 7 -d ';')
 
     # Get template path from host vz.conf
     . /etc/vz/vz.conf
-    template_path="$TEMPLATE/cache/"
-    ostemplate_long=$(ls "$template_path" | grep -i "^$ostemplate_short" | sort -rfg | head -n 1 | sed s/\.tar\.*//g)
+    local template_path="$TEMPLATE/cache/"
+    local ostemplate_long=$(ls "$template_path" | grep -i "^$ostemplate_short" | sort -rfg | head -n 1 | sed s/\.tar\.*//g)
 
     # Create ct and set network
     vzctl create "$ctid" --ostemplate "$ostemplate_long" --name "$hostname" --hostname "$hostname" --config "$vzconfig"
@@ -28,10 +28,10 @@ pop_vm() {
     vzctl set "$ctid" --nameserver "$DNS" --save
 
     # Create network interface for DHCP
-    ct_private=$(vzlist -a1o private "$ctid")
-    interfaces="${ct_private}/etc/network/interfaces"
+    local ct_private=$(vzlist -a1o private "$ctid")
+    local interfaces="${ct_private}/etc/network/interfaces"
 
-    cat > $interfaces << EOF
+    cat > "$interfaces" << EOF
 # Auto generated lo interface
 auto lo
 iface lo inet loopback
@@ -40,11 +40,6 @@ iface lo inet loopback
 auto eth0
     iface eth0 inet dhcp
 EOF
-
-    # resync notifier config to CT
-    if [[ -f "${ct_private}/etc/vz-template/notifier_config_global.sh" ]]; then
-        cp -f "${DIR}/servers/notifier/etc/vz-template/notifier_config_global.sh" "${ct_private}/etc/vz-template/notifier_config_global.sh"
-    fi
 }
 
 
@@ -57,8 +52,12 @@ if [ "$#" -eq 1 ]; then
 fi
 
 while read line; do
-    ctid=$(echo "$line" | cut -f 2 -d ';')
-    if [[ $(tr -dc ';' <<<"$line" | wc -c) -eq 5 ]] && ! ct_exists "$ctid"; then
+    ctid=$(echo "$line" | cut -f 7 -d ';')
+    overlay=$(echo "$line" | cut -f 3 -d ';')
+    if [[ $(tr -dc ';' <<<"$line" | wc -c) -eq 6 ]] && ! ct_exists "$ctid"; then
+        # Build CT from vz template
         pop_vm "$line"
+        # (re)Inject overlay
+        bash "${DIR}/inject.sh" "$ctid" "$overlay"
     fi
 done < "$csv_file"
