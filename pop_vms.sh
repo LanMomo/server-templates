@@ -24,11 +24,18 @@ pop_vm() {
 
     # Create ct and set network
     vzctl create "$ctid" --ostemplate "$ostemplate_long" --name "$hostname" --hostname "$hostname" --config "$vzconfig"
+
+    if [[ ! ct_exists "$ctid" ]]; then
+        echo "FAILED TO CREATE CT $ctid"
+        exit 1
+    fi
+
     vzctl set "$ctid" --netif_add "eth0,${public_mac},veth${ctid}.0,,${HOST_BRIDGE}" --save
     vzctl set "$ctid" --nameserver "$DNS" --save
 
     # Create network interface for DHCP
     local ct_private=$(vzlist -a1o private "$ctid")
+
     local interfaces="${ct_private}/etc/network/interfaces"
 
     cat > "$interfaces" << EOF
