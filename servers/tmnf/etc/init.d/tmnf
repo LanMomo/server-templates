@@ -17,11 +17,11 @@ SCREENSESSION_ASECO="aseco"
 INVOCATION_TM="./RunTrackmaniaNations.sh"
 INVOCATION_ASECO="./Aseco.sh"
 
-PATH="/home/tmnf/serverfiles"
+TMNF_PATH="/home/tmnf/serverfiles"
 
 start_service() {
-    su - $USER -c "cd $PATH; tmux new-session -s \"$SCREENSESSION_TM\" -d \"$INVOCATION_TM\""
-    su - $USER -c "cd $PATH; tmux new-session -s \"$SCREENSESSION_ASECO\" -d \"$INVOCATION_ASECO\""
+    su - $USER -c "cd $TMNF_PATH; tmux new-session -s \"$SCREENSESSION_TM\" -d \"$INVOCATION_TM\""
+    su - $USER -c "cd $TMNF_PATH; tmux new-session -s \"$SCREENSESSION_ASECO\" -d \"$INVOCATION_ASECO\""
 }
 
 stop_service() {
