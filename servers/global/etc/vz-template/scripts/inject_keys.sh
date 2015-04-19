@@ -7,19 +7,29 @@ cat > /etc/init.d/inject_keys << 'EOF'
 # /etc/init.d/inject_keys
 # Download ssh keys from a gist and injects them to root
 
-if [[ ! -d /root/.ssh/ ]]; then
-    mkdir /root/.ssh/
-else
-    rm -f /root/.ssh/authorized_keys
-fi
+start() {
+    if [[ ! -d /root/.ssh/ ]]; then
+        mkdir /root/.ssh/
+    else
+        rm -f /root/.ssh/authorized_keys
+    fi
 
-wget https://raw.githubusercontent.com/lanmomo/server-keys/master/build/authorized_keys -O /root/.ssh/authorized_keys
+    wget https://raw.githubusercontent.com/lanmomo/server-keys/master/build/authorized_keys -O /root/.ssh/authorized_keys
 
-chmod 700 /root/.ssh/
-chmod 600 /root/.ssh/authorized_keys
+    chmod 700 /root/.ssh/
+    chmod 600 /root/.ssh/authorized_keys
 
-update-rc.d -f inject_keys remove
-rm -f /etc/init.d/inject_keys
+    update-rc.d -f inject_keys remove
+    rm -f /etc/init.d/inject_keys
+
+    exit 0
+}
+
+case "$1" in
+    start)
+        start
+        ;;
+esac
 
 EOF
 
