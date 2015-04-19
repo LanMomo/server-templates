@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -e
 ### BEGIN INIT INFO
 # Provides:          tmnf
 # Required-Start:    $local_fs $remote_fs $network $syslog
@@ -8,51 +8,47 @@
 # Short-Description: Start/stop tmnf as daemon
 ### END INIT INFO
 
-## Username to run tmnf under
 USER="tmnf"
 
-SCREENSESSION_TM="tmnf"
-SCREENSESSION_ASECO="aseco"
+NAME_TMNF=tmnf
+NAME_ASECO=aseco
 
-INVOCATION_TM="./RunTrackmaniaNations.sh"
-INVOCATION_ASECO="./Aseco.sh"
+PATH_TMNF="/home/tmnf/serverfiles"
 
-TMNF_PATH="/home/tmnf/serverfiles"
+PIDFILE_TMNF="$PATH_TMNF/TrackmaniaServer.pid"
+PIDFILE_ASECO="$PATH_TMNF/aseco.pid"
 
-start_service() {
-    su - $USER -c "cd $TMNF_PATH; tmux new-session -s \"$SCREENSESSION_TM\" -d \"$INVOCATION_TM\""
-    su - $USER -c "cd $TMNF_PATH; tmux new-session -s \"$SCREENSESSION_ASECO\" -d \"$INVOCATION_ASECO\""
-}
+DAEMON_TMNF="$PATH_TMNF/TrackmaniaServer.sh"
+DAEMON_ASECO="$PATH_TMNF/aseco.sh"
 
-stop_service() {
-    su - $USER -c "tmux kill-session -t \"$SCREENSESSION_ASECO\""
-    su - $USER -c "tmux kill-session -t \"$SCREENSESSION_TM\""
-    bash /etc/vz-template/export_tmnf_db.sh
-}
-
-#Start-Stop here
 case "$1" in
-    start)
-        start_service
-    ;;
-    stop)
-        stop_service
-    ;;
-    restart)
-        stop_service
-        start_service
-    ;;
-    status)
-       if su - c $USER "tmux ls | grep -q ^$SCREENSESSION_TM:"; then #YOLO
-           echo "$SERVICE is running."
-       else
-           echo "$SERVICE is not running."
-       fi
-    ;;
-    *)
-        echo "Usage: $0 {start|stop|status}"
-        exit 1
-    ;;
+  start)
+        echo -n "Starting daemon: $NAME_TMNF"
+	    start-stop-daemon --start --quiet --pidfile "$PIDFILE_TMNF" --chdir "$PATH_TMNF" --chuid "$USER" --exec "$DAEMON_TMNF"
+        echo "."
+
+        sleep 2s #YOLO
+
+        echo -n "Starting daemon: $NAME_ASECO"
+	    start-stop-daemon --start --quiet --pidfile "$PIDFILE_ASECO" --chdir "$PATH_TMNF" --chuid "$USER" --exec "$DAEMON_ASECO"
+        echo "."
+	;;
+  stop)
+        echo -n "Stopping daemon: $NAME_ASECO"
+	    start-stop-daemon --stop --quiet --pidfile "$PIDFILE_ASECO"
+        echo "."
+
+        echo -n "Stopping daemon: $NAME_TMNF"
+	    start-stop-daemon --stop --quiet --pidfile "$PIDFILE_TMNF"
+        echo "."
+
+        echo -n "Exporting database: $USER"
+        bash /etc/vz-template/export_tmnf_db.sh
+        echo "."
+	;;
+  *)
+	echo "Usage: $0 {start|stop}"
+	exit 1
 esac
 
 exit 0
