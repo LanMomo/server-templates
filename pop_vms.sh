@@ -25,7 +25,7 @@ pop_vm() {
     # Create ct and set network
     vzctl create "$ctid" --ostemplate "$ostemplate_long" --name "$hostname" --hostname "$hostname" --config "$vzconfig"
 
-    if [[ ! ct_exists "$ctid" ]]; then
+    if ! ct_exists "$ctid"; then
         echo "FAILED TO CREATE CT $ctid"
         exit 1
     fi
