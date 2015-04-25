@@ -10,7 +10,7 @@ ct_exists() {
 
 for ct in {100100..100200}; do
     if ct_exists "$ct"; then
-	    ct_private=$($vzlist "$ct" -H -o root)
+	    ct_private=$(vzlist "$ct" -H -o root)
         notifier_file="${ct_private}/etc/vz-template/notifier_config_global.sh"
         if [[ -f "$notifier_file" ]]; then
         	cat "${DIR}/../servers/notifier/etc/vz-template/notifier_config_global.sh" > "$notifier_file"
