@@ -26,7 +26,7 @@ INVOCATION="java -Xmx${MAXHEAP}M -Xms${MINHEAP}M -XX:+UseConcMarkSweepGC -jar $S
 
 start_service() {
     chown -R minecraft: /home/minecraft
-    su - $USER -c "screen -h $HISTORY -dmS $SCREENSESSION $INVOCATION"
+    su - $USER -c "cd $MCPATH; screen -h $HISTORY -dmS $SCREENSESSION $INVOCATION"
 }
 
 stop_service() {
@@ -36,10 +36,10 @@ stop_service() {
 #Start-Stop here
 case "$1" in
     start)
-        su - $USER -c "cd $MCPATH; screen -h $HISTORY -dmS $SCREENSESSION $INVOCATION"
+        start_service
     ;;
     stop)
-        su - $USER -c "screen -p 0 -S $SCREENSESSION -X quit"
+        stop_service
     ;;
     restart)
         stop_service
