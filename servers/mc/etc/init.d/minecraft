@@ -25,6 +25,7 @@ HISTORY=1024
 INVOCATION="java -Xmx${MAXHEAP}M -Xms${MINHEAP}M -XX:+UseConcMarkSweepGC -jar $SERVICE $OPTIONS"
 
 start_service() {
+    chown -R minecraft: /home/minecraft
     su - $USER -c "screen -h $HISTORY -dmS $SCREENSESSION $INVOCATION"
 }
 
