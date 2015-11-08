@@ -1,5 +1,5 @@
 valve:notifier
-ut2004:notifier
+ut2014:notifier
 minecraft:notifier
 mumble:notifier
 tmnf:notifier
