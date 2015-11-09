@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<settings>
+  <aseco>
+    <admins>
+      <!-- ip and port only needed when joining server over LAN -->
+      <tmlogin>adminlogin</tmlogin>
+    </admins>
+    <colors>
+      <error>$f00$i</error>
+      <emotic>$z$fa0$i</emotic>
+      <record>$0f3</record>
+      <message>$39f</message>
+      <server>$ff0</server>
+      <highlite>$fff</highlite>
+      <welcome>$000</welcome>
+      <interact>$ff0$i</interact>
+      <donate>$f0f</donate> <!-- new to 2.1.5 -->
+    </colors>
+    <messages>
+      <startup>{#server}*** Aseco {#highlite}v{1}{#server} running on {#highlite}{2}{#server}:{#highlite}{3}{#server} ***</startup>
+      <welcome>{#welcome}Hello {1},{br}This server uses Aseco v{2} to manage your records.{br}The TMU version of Aseco includes a Manialink Framework.{br}It manages all windows that appear on your screen.{br}The bar you see at the top of the screen will contain all windows you hide.{br}Click on the text of the symbols to recover them.{br}For more details visit the $f00$l[http://www.sourceforge.net/projects/aseco]Project's Website$l{#welcome}!</welcome>
+      <record_new>{#server}>> {#record}You secured your {#highlite}{1}{#record}. record place with a time of {#highlite}{2}{#record}!</record_new>
+      <record_new_rank>{#server}>> {#highlite}{1}{#record} claimed the {#highlite}{3}{#record}. Record rank ({#highlite}{2}{#record})!</record_new_rank>
+      <record_first>{#server}>> {#highlite}{1}{#record} took the {#highlite}{3}{#record}. Record with a time of {#highlite}{2}{#record}!</record_first>
+      <record_current>{#server}>> {#message}Current Record on {#highlite}{1}{#message} is {#highlite}{2}{#message} and held by {#highlite}{3}</record_current>
+      <record_none>{#server}>> {#message}Currently no Record on {#highlite}{1}{#message} ...</record_none>
+      <ranking>{#server}>> {#message}Overall Record Ranking after this round:</ranking>
+      <ranking_record>{#highlite}{1}{#message}.{#highlite}{2}{#message}[{#highlite}{3}{#message}],</ranking_record>
+      <ranking_none>{#server}>> {#message}Overall Record Ranking after this round: No records!</ranking_none>
+      <vote_in_progress>{#server}{#message}There is already a vote in progress. Wait until it's over, then try again.</vote_in_progress>
+
+<!-- donate messages - new to 2.1.5 -->
+      <donation>{#donate} Donated {#highlite}{1}{#donate} coppers to {#highlite}{2}$z</donation>
+      <thanks_all>{#server}>> {#highlite}{1}$z$s{#donate} made a donation of {#highlite}{2}{#donate} coppers.  Thank You!</thanks_all>
+      <thank_you>{#server}> {#donate}You made a donation of {#highlite}{1}{#donate} coppers.  Thank You!</thank_you>
+      <donate_minimum>{#server}> {#error}Minimum donation amount is {#highlite}$i {1}{#error} coppers!</donate_minimum>
+      <donate_help>{#server}> {#error}Use {#highlite}$i /donate &lt;number&gt;{#error} to donate coppers to the server</donate_help>
+    </messages>
+    <welcome_msg_window>False</welcome_msg_window>
+    <welcome_msg_enabled>True</welcome_msg_enabled>
+    <script_timeout>60</script_timeout>
+    <endrace_chatrecs>False</endrace_chatrecs>
+    <recs_count>5</recs_count>
+    <debug>False</debug>
+    <style>standard</style>
+  </aseco>
+  <tmserver>
+    <login>SuperAdmin</login>
+    <password>password</password>
+    <ip>127.0.0.1</ip>
+    <port>5000</port>
+  </tmserver>
+</settings>

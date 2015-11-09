@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<playlist>
+	<gameinfos>
+		<game_mode>1</game_mode>
+		<chat_time>10000</chat_time>
+		<finishtimeout>1</finishtimeout>
+		<allwarmupduration>0</allwarmupduration>
+		<disablerespawn>0</disablerespawn>
+		<forceshowallopponents>0</forceshowallopponents>
+		<rounds_pointslimit>30</rounds_pointslimit>
+		<rounds_usenewrules>0</rounds_usenewrules>
+		<rounds_forcedlaps>0</rounds_forcedlaps>
+		<rounds_pointslimitnewrules>5</rounds_pointslimitnewrules>
+		<team_pointslimit>50</team_pointslimit>
+		<team_maxpoints>6</team_maxpoints>
+		<team_usenewrules>0</team_usenewrules>
+		<team_pointslimitnewrules>5</team_pointslimitnewrules>
+		<timeattack_limit>420000</timeattack_limit>
+		<timeattack_synchstartperiod>0</timeattack_synchstartperiod>
+		<laps_nblaps>5</laps_nblaps>
+		<laps_timelimit>0</laps_timelimit>
+		<cup_pointslimit>100</cup_pointslimit>
+		<cup_roundsperchallenge>5</cup_roundsperchallenge>
+		<cup_nbwinners>3</cup_nbwinners>
+		<cup_warmupduration>2</cup_warmupduration>
+	</gameinfos>
+
+	<hotseat>
+		<game_mode>1</game_mode>
+		<time_limit>420000</time_limit>
+		<rounds_count>5</rounds_count>
+	</hotseat>
+
+	<filter>
+		<is_lan>1</is_lan>
+		<is_internet>1</is_internet>
+		<is_solo>0</is_solo>
+		<is_hotseat>0</is_hotseat>
+		<sort_index>27</sort_index>
+		<random_map_order>0</random_map_order>
+		<force_default_gamemode>0</force_default_gamemode>
+	</filter>
+
+	<startindex>0</startindex>
+
+	<challenge>
+		<file>LanmomoTracks\$000Fire, burn me, cleanse my soul in your embrace.Challenge.Gbx</file>
+	</challenge>
+	<challenge>
+		<file>LanmomoTracks\$000Mini$f80Track$0ff-12.Challenge.Gbx</file>
+	</challenge>
+	<challenge>
+		<file>LanmomoTracks\$006 The Offspring V1.1.Challenge.Gbx</file>
+	</challenge>
+	<challenge>
+		<file>LanmomoTracks\$00fB$00fO$00cO$00cO$009O$009S$006T$006!$003!$003!.Challenge.Gbx</file>
+	</challenge>
+	<challenge>
+		<file>LanmomoTracks\$00fE$00fN$00cD$00cU$009R$009A$006N$006C$003E$003!.Challenge.Gbx</file>
+	</challenge>
+	<challenge>
+		<file>LanmomoTracks\$00fI$01fn $06fm$06fy place .Challenge.Gbx</file>
+	</challenge>
+	<challenge>
+		<file>LanmomoTracks\$00fLive$fffFor$f70Speed.Challenge.Gbx</file>
+	</challenge>
+	<challenge>
+		<file>LanmomoTracks\$00fSupa$0ffCup$fff-$00f010.Challenge.Gbx</file>
+	</challenge>
+	<challenge>
+		<file>LanmomoTracks\illinoy.Challenge.Gbx</file>
+	</challenge>
+	<challenge>
+		<file>LanmomoTracks\$090The $999Speed $090Machine.Challenge.Gbx</file>
+	</challenge>
+	<challenge>
+		<file>LanmomoTracks\$0c0Aero.Challenge.Gbx</file>
+	</challenge>
+	<challenge>
+		<file>LanmomoTracks\$0f0R$1f1a$2f2c$3f3i$4f4n$5f5g station.Challenge.Gbx</file>
+	</challenge>
+	<challenge>
+		<file>LanmomoTracks\$0ffDeep Freeze.Challenge.Gbx</file>
+	</challenge>
+	<challenge>
+		<file>LanmomoTracks\$20aWild$s$d00Ride.Challenge.Gbx</file>
+	</challenge>
+	<challenge>
+		<file>LanmomoTracks\$606W$fffhen $606t$fffhe $606f$fffunday $606c$fffomes.Challenge.Gbx</file>
+	</challenge>
+	<challenge>
+		<file>LanmomoTracks\$823Ahead is a $9bcblur.Challenge.Gbx</file>
+	</challenge>
+	<challenge>
+		<file>LanmomoTracks\$912$wT$999he $912T$999hree $912Amigo's .Challenge.Gbx</file>
+	</challenge>
+	<challenge>
+		<file>LanmomoTracks\$a00_USSR_ GLUK.Challenge.Gbx</file>
+	</challenge>
+	<challenge>
+		<file>LanmomoTracks\$a22!$fc0ns$a22!$fc0de$a22TMN.Challenge.Gbx</file>
+	</challenge>
+	<challenge>
+		<file>LanmomoTracks\Restart.Challenge.Gbx</file>
+	</challenge>
+	<challenge>
+		<file>LanmomoTracks\$a70ESL $fffMotocross Mayhem.Challenge.Gbx</file>
+	</challenge>
+	<challenge>
+		<file>LanmomoTracks\$CCCChamaecyparis.Challenge.Gbx</file>
+	</challenge>
+	<challenge>
+		<file>LanmomoTracks\$cooThe Groove Toob.Challenge.Gbx</file>
+	</challenge>
+	<challenge>
+		<file>LanmomoTracks\$f00Qu$w$i$af1I$f80$mn$000i$f80x$000Xx.Challenge.Gbx</file>
+	</challenge>
+	<challenge>
+		<file>LanmomoTracks\$f00The Jump.Challenge.Gbx</file>
+	</challenge>
+	<challenge>
+		<file>LanmomoTracks\$f00Tripute $ff0To $fffHoheb..Challenge.Gbx</file>
+	</challenge>
+	<challenge>
+		<file>LanmomoTracks\$f00[SF]$ff8HighSpeed Ring.Challenge.Gbx</file>
+	</challenge>
+	<challenge>
+		<file>LanmomoTracks\$ff0$w$s$iS K I L L.Challenge.Gbx</file>
+	</challenge>
+	<challenge>
+		<file>LanmomoTracks\$ff0Ballad.Challenge.Gbx</file>
+	</challenge>
+	<challenge>
+		<file>LanmomoTracks\$fff$i$wBlack Velvet.Challenge.Gbx</file>
+	</challenge>
+	<challenge>
+		<file>LanmomoTracks\$fff$i$wKing of the $f00Kill! $fffForever$f00!.Challenge.Gbx</file>
+	</challenge>
+	<challenge>
+		<file>LanmomoTracks\$i$090Dutch$090Delight$000_$a00No SC.Challenge.Gbx</file>
+	</challenge>
+	<challenge>
+		<file>LanmomoTracks\Restless.Challenge</file>
+	</challenge>
+	<challenge>
+		<file>LanmomoTracks\$I$444F$555e$666e$777l $888T$999h$AAAe $BBBS$CCCp$DDDe$EEEed.Challenge.Gbx</file>
+	</challenge>
+	<challenge>
+		<file>LanmomoTracks\$i$f00Easy$00f peasy.Challenge.Gbx</file>
+	</challenge>
+	<challenge>
+		<file>LanmomoTracks\$i$f00Thunderstr$gA$f00ck.Challenge.Gbx</file>
+	</challenge>
+	<challenge>
+		<file>LanmomoTracks\$i$ff0Mini Map $f01Candel - 10.Challenge.Gbx</file>
+	</challenge>
+	<challenge>
+		<file>LanmomoTracks\$i$n$f43DEEP $cc0INSIDE $fffMod.Challenge.Gbx</file>
+	</challenge>
+	<challenge>
+		<file>LanmomoTracks\$i$w$fffstreamline.Challenge.Gbx</file>
+	</challenge>
+	<challenge>
+		<file>LanmomoTracks\$n$123F$234a$345s$456t$567B$678l$789ast.Challenge.Gbx</file>
+	</challenge>
+	<challenge>
+		<file>LanmomoTracks\$n$603r$703e$803R$903u$a03n.Challenge.Gbx</file>
+	</challenge>
+	<challenge>
+		<file>LanmomoTracks\$n$a50Highway$b60Of$c70Speed.Challenge.Gbx</file>
+	</challenge>
+	<challenge>
+		<file>LanmomoTracks\$n$w$080CraZy $f00RuN $00fV4.1.Challenge.Gbx</file>
+	</challenge>
+	<challenge>
+		<file>LanmomoTracks\$s$009Att$008ack $008Sp$006eed.Challenge.Gbx</file>
+	</challenge>
+	<challenge>
+		<file>LanmomoTracks\$s$f00'Ma$d00Dn$c00Es$a00S'.Challenge.Gbx</file>
+	</challenge>
+	<challenge>
+		<file>LanmomoTracks\$s$i$08fThe Odyssey.Challenge.Gbx</file>
+	</challenge>
+	<challenge>
+		<file>LanmomoTracks\$s$w$0f0R$3f3e$6f6v$9f9o$cfcl$ffcu$ff9t$ff6i$ff3o$ff0n.Challenge.Gbx</file>
+	</challenge>
+	<challenge>
+		<file>LanmomoTracks\$s$w$fc0Twi$fc2light $fd5Impact.Challenge.Gbx</file>
+	</challenge>
+	<challenge>
+		<file>LanmomoTracks\$s$w$fd0Drivin' $ea0me $960Crazy!.Challenge.Gbx</file>
+	</challenge>
+	<challenge>
+		<file>LanmomoTracks\$s$w$fff=$f00O$f30R$f60A-$f80cle$fff=.Challenge.Gbx</file>
+	</challenge>
+	<challenge>
+		<file>LanmomoTracks\$sAmerican Elevator - $fffCrusard.Challenge.Gbx</file>
+	</challenge>
+	<challenge>
+		<file>LanmomoTracks\$w$09fV$08fu$07fl$06ft$05fu$04fr$03fe.Challenge.Gbx</file>
+	</challenge>
+	<challenge>
+		<file>LanmomoTracks\$w$0CFB$0DFo$0EFb$0FFsl$0EFei$0DFg$0CFh.Challenge.Gbx</file>
+	</challenge>
+	<challenge>
+		<file>LanmomoTracks\$w$88fIF.Challenge.Gbx</file>
+	</challenge>
+	<challenge>
+		<file>LanmomoTracks\$w$c00T$000he $c00T$000rump $c00C$000ard.Challenge.Gbx</file>
+	</challenge>
+	<challenge>
+		<file>LanmomoTracks\$W$F00XXX $g$iFirebrand.Challenge.Gbx</file>
+	</challenge>
+	<challenge>
+		<file>LanmomoTracks\$w$f0aS$fefweet $f0aD$fefream.Challenge.Gbx</file>
+	</challenge>
+	<challenge>
+		<file>LanmomoTracks\Yo.Challenge.Gbx</file>
+	</challenge>
+	<challenge>
+		<file>LanmomoTracks\$w$ff0Back for $00fNations.Challenge.Gbx</file>
+	</challenge>
+	<challenge>
+		<file>LanmomoTracks\$w$ff0F$0f0ull $ff0T$0f0hrottle.Challenge.Gbx</file>
+	</challenge>
+	<challenge>
+		<file>LanmomoTracks\$w$i$000B$FFFrainwashed.Challenge.Gbx</file>
+	</challenge>
+	<challenge>
+		<file>LanmomoTracks\$w$i$00fThe Launch $ff0___.Challenge.Gbx</file>
+	</challenge>
+	<challenge>
+		<file>LanmomoTracks\$w$i$0f0The Launch 2 $ff0___.Challenge.Gbx</file>
+	</challenge>
+	<challenge>
+		<file>LanmomoTracks\$w$i$b39Sti$c39cky $d39Tar$e39mac.Challenge.Gbx</file>
+	</challenge>
+	<challenge>
+		<file>LanmomoTracks\$w$i$fffFresh $0afSky.Challenge.Gbx</file>
+	</challenge>
+	<challenge>
+		<file>LanmomoTracks\$w$s$090Underground v1.Challenge.Gbx</file>
+	</challenge>
+	<challenge>
+		<file>LanmomoTracks\$w$s$4caFo$6aaur $477in $6aaO$4cane.Challenge.Gbx</file>
+	</challenge>
+	<challenge>
+		<file>LanmomoTracks\$W$S$I$001F$101l$201i$301p$401p$501i$601e.Challenge.Gbx</file>
+	</challenge>
+	<challenge>
+		<file>LanmomoTracks\$z$s$w$ff0$irek$f00$istravaganza.Challenge.Gbx</file>
+	</challenge>
+	<challenge>
+		<file>LanmomoTracks\Bleu Spirit.Challenge.Gbx</file>
+	</challenge>
+	<challenge>
+		<file>LanmomoTracks\CryoSpeed.Challenge.Gbx</file>
+	</challenge>
+	<challenge>
+		<file>LanmomoTracks\DamNation.Challenge.Gbx</file>
+	</challenge>
+	<challenge>
+		<file>LanmomoTracks\Mission Impossible.Challenge.Gbx</file>
+	</challenge>
+	<challenge>
+		<file>LanmomoTracks\Racing Line 101.Challenge.Gbx</file>
+	</challenge>
+	<challenge>
+		<file>LanmomoTracks\Rammstein.Challenge.Gbx</file>
+	</challenge>
+	<challenge>
+		<file>LanmomoTracks\Stunt Road I.Challenge.Gbx</file>
+	</challenge>
+	<challenge>
+		<file>LanmomoTracks\Stunt Road II.Challenge.Gbx</file>
+	</challenge>
+	<challenge>
+		<file>LanmomoTracks\Stunt Road III.Challenge.Gbx</file>
+	</challenge>
+	<challenge>
+		<file>LanmomoTracks\The Round Concrete Circuit.Challenge.Gbx</file>
+	</challenge>
+	<challenge>
+		<file>LanmomoTracks\WallRide Licence OnLine.Challenge.Gbx</file>
+	</challenge>
+</playlist>
