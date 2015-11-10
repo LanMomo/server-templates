@@ -23,34 +23,34 @@ DAEMON_TMNF="$PATH_TMNF/TrackmaniaServer.sh"
 DAEMON_ASECO="$PATH_TMNF/aseco.sh"
 
 case "$1" in
-  start)
+    start)
         chown -R $USER:$GROUP $PATH_TMNF
         echo -n "Starting daemon: $NAME_TMNF"
-	    start-stop-daemon --start --quiet --pidfile "$PIDFILE_TMNF" --chdir "$PATH_TMNF" --chuid "$USER" --exec "$DAEMON_TMNF"
+        start-stop-daemon --start --quiet --pidfile "$PIDFILE_TMNF" --chdir "$PATH_TMNF" --chuid "$USER" --exec "$DAEMON_TMNF"
         echo "."
 
         sleep 2s #YOLO
 
         echo -n "Starting daemon: $NAME_ASECO"
-	    start-stop-daemon --start --quiet --pidfile "$PIDFILE_ASECO" --chdir "$PATH_TMNF" --chuid "$USER" --exec "$DAEMON_ASECO"
+        start-stop-daemon --start --quiet --pidfile "$PIDFILE_ASECO" --chdir "$PATH_TMNF" --chuid "$USER" --exec "$DAEMON_ASECO"
         echo "."
-	;;
-  stop)
+    ;;
+    stop)
         echo -n "Stopping daemon: $NAME_ASECO"
-	    start-stop-daemon --stop --quiet --pidfile "$PIDFILE_ASECO"
+        start-stop-daemon --stop --quiet --pidfile "$PIDFILE_ASECO"
         echo "."
 
         echo -n "Stopping daemon: $NAME_TMNF"
-	    start-stop-daemon --stop --quiet --pidfile "$PIDFILE_TMNF"
+        start-stop-daemon --stop --quiet --pidfile "$PIDFILE_TMNF"
         echo "."
 
         echo -n "Exporting database: $USER"
         bash /etc/vz-template/export_tmnf_db.sh
         echo "."
-	;;
-  *)
-	echo "Usage: $0 {start|stop}"
-	exit 1
+    ;;
+    *)
+        echo "Usage: $0 {start|stop}"
+        exit 1
 esac
 
 exit 0
