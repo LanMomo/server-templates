@@ -9,6 +9,7 @@
 ### END INIT INFO
 
 USER="tmnf"
+GROUP="tmnf"
 
 NAME_TMNF=tmnf
 NAME_ASECO=aseco
@@ -23,6 +24,7 @@ DAEMON_ASECO="$PATH_TMNF/aseco.sh"
 
 case "$1" in
   start)
+        chown -R $USER:$GROUP $PATH_TMNF
         echo -n "Starting daemon: $NAME_TMNF"
 	    start-stop-daemon --start --quiet --pidfile "$PIDFILE_TMNF" --chdir "$PATH_TMNF" --chuid "$USER" --exec "$DAEMON_TMNF"
         echo "."
